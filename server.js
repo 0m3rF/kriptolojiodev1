@@ -1,6 +1,7 @@
 var express = require('express');
 var app     = express();
-var server  = app.listen(3000);
+var port = process.env.PORT || 3000;
+var server  = app.listen(port);
 var io      = require('socket.io').listen(server);
 
 app.use( express.static( __dirname + '/client' )); // client klasörünü gönderecek
