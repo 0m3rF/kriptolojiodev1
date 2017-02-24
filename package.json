@@ -1,0 +1,30 @@
+{
+  "name": "databitirmeprojesi",
+  "version": "0.0.1",
+  "description": "This is our final project for university",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0m3rF/databitirmeprojesi.git"
+  },
+  "keywords": [
+    "Socket.io",
+    "node.js",
+    "expressjs"
+  ],
+  "author": "0m3rF",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/0m3rF/databitirmeprojesi/issues"
+  },
+  "homepage": "https://github.com/0m3rF/databitirmeprojesi#readme",
+  "dependencies": {
+    "chart.js": "^2.5.0",
+    "express": "^4.14.1",
+    "highcharts": "^5.0.7",
+    "socket.io": "^1.7.2"
+  }
+}
