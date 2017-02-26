@@ -1,6 +1,6 @@
 
 var inputName,inputMessage,messageBox;
-var socket = io.connect('http://localhost:3000');
+var socket = io.connect('https://kriptolojiassignment1.herokuapp.com/');
 
 inputName = document.getElementById('inputName');
 inputMessage = document.getElementById('inputMessage');
