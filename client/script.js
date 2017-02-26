@@ -1,11 +1,11 @@
 
 var inputName,inputMessage,messageBox;
-var socket = io.connect('https://kriptolojiassignment1.herokuapp.com/');
+var socket = io.connect('https://kriptolojiassignment1.herokuapp.com/'); //https://kriptolojiassignment1.herokuapp.com/
 
 inputName = document.getElementById('inputName');
 inputMessage = document.getElementById('inputMessage');
 messageBox = document.getElementById('messageBox');
-
+inputKey = document.getElementById('inputKey');
 
 inputMessage.addEventListener("keyup", function(event) {
     event.preventDefault();
@@ -24,10 +24,15 @@ socket.emit('sendMessage',{name:inputName.value, message: cipherText(inputMessag
 
 function cipherText(text)
 {
+
+	if(inputKey.value == "")
+		return text;
+
+
 	var count = Math.floor(text.length / 6 );
 	p = [2,4,0,5,3,1];
 	var c = 1;
-	var key = 8;
+	var key = parseInt(inputKey.value) % 26;
 	result = "";
 	while(count > 0)
 	{
@@ -66,10 +71,14 @@ socket.on('cipherMessage',function (data){
 
 function decipherText(text)
 {
+
+	if(inputKey.value == "")
+		return text;
+
 	var count = Math.floor(text.length / 6 );
 	p = [2,5,0,4,1,3];
 	var c = 1;
-	var key = 8;
+	var key = parseInt(inputKey.value) % 26;
 	result = "";
 
 	while(count > 0)

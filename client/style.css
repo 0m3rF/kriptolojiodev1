@@ -1,6 +1,11 @@
-		#d
-		{
-			height: 500px;
-			width: 500px;
-			background-color: blue;
-		}
+#inputName
+{
+	clear: right;
+	float: left;
+}
+
+#inputNameLabel
+{
+clear: right;
+	float: left;
+}

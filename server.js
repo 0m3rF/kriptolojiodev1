@@ -23,8 +23,7 @@ app.get('/',function(req,res){
 io.on('connection', function (socket) {
 	console.log("Someone opened socket.io connection successfully");
   
-  socket.emit('news', { hello: 'world' });
-  
+ 
   socket.on('sendMessage',function (data) {
   	console.log("gelen mesaj = " + data.message);
     io.sockets.emit('cipherMessage',{name: data.name,message: data.message })

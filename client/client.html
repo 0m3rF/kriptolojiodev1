@@ -8,10 +8,19 @@
 <body>
 <script src="socket.io.js"></script>
 
-<label>Your Nickname:  </label><input id="inputName" type="text" name="username" style="clear: right;">
-<textarea disabled="true"  id="messageBox" style="float:left;width:500px; height:400px;background-color: lightblue"></textarea>
-<label>Enter Message:  </label><input id="inputMessage" type="text" name="message">
-<button id="sendButton" onclick="sendMessage()">Send</button>
+<label id="inputNameLabel">Your Nickname:  </label><input id="inputName" type="text" name="username" style="clear: right;">
+
+<br/>
+<br/>
+
+<textarea disabled="true"  id="messageBox" style="width:500px; height:400px;background-color: lightblue"></textarea>
+<br/>
+<br/>
+<label>Enter Message:  </label><input id="inputMessage" type="text" name="message"><button id="sendButton" onclick="sendMessage()">Send</button>
+<br/>
+<br/>
+<label>Enter Key:  </label><input id="inputKey" type="text" name="key">
+
 <script src="script.js"></script>
 
 
