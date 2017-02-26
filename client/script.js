@@ -1,6 +1,6 @@
 
 var inputName,inputMessage,messageBox;
-var socket = io.connect('https://kriptolojiassignment1.herokuapp.com/');
+var socket = io.connect('http://localhost.com:3000');
 
 inputName = document.getElementById('inputName');
 inputMessage = document.getElementById('inputMessage');
@@ -24,7 +24,35 @@ socket.emit('sendMessage',{name:inputName.value, message: cipherText(inputMessag
 
 function cipherText(text)
 {
-  return text + "* Buraya Şifrelenmiş hali dönecek!";
+	var count = Math.floor(text.length / 6 );
+	p = [2,4,0,5,3,1];
+	var c = 1;
+	var key = 8;
+	result = "";
+	while(count > 0)
+	{
+		x = text.substring( (6*c) - 6 , 6*c );
+		temp = [];
+		for (i=0;i<6;i++)
+		{
+			temp[i] = x[p[i]];
+		
+			if(i == 0)
+			{
+				temp[i] = String.fromCharCode(((temp[i].charCodeAt(0)-97 + key) % 26) +97);
+			}
+			else
+			{
+				temp[i] = String.fromCharCode(((temp[i].charCodeAt(0)-97 + temp[i-1].charCodeAt(0)-97 ) % 26)+97);
+			}
+		}			
+		result += temp.join('');
+		c++;
+		count--;
+	}
+
+
+  return result;
 }
 
 socket.on('cipherMessage',function (data){
@@ -38,7 +66,34 @@ socket.on('cipherMessage',function (data){
 
 function decipherText(text)
 {
-	return text.split("*")[0];
+	var count = Math.floor(text.length / 6 );
+	p = [2,5,0,4,1,3];
+	var c = 1;
+	var key = 8;
+	result = "";
+
+	while(count > 0)
+	{
+		x = text.substring( (6*c) - 6 , 6*c );
+		temp = [];
+
+		for(i=0;i<6;i++)
+		{
+		   	temp[i] = x[p[i]];
+		  	if(p[i] == 0)
+		       temp[i] = String.fromCharCode( ( mod((x[p[i]].charCodeAt(0)-97 - key),26) ) +97);
+		  	else
+		       temp[i] = String.fromCharCode(( mod(x[p[i]].charCodeAt(0)-97 - (x[p[i]-1].charCodeAt(0)-97 ) , 26))+97); 
+		}
+		result += temp.join('');
+		c++;
+		count--;
+	}
+	return result;
+}
+
+function mod(n, m) {
+        return ((n % m) + m) % m;
 }
 
 
