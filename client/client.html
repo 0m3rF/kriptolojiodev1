@@ -16,10 +16,20 @@
 <textarea disabled="true"  id="messageBox" style="width:500px; height:400px;background-color: lightblue"></textarea>
 <br/>
 <br/>
-<label>Enter Message:  </label><input id="inputMessage" type="text" name="message"><button id="sendButton" onclick="sendMessage()">Send</button>
+<label>Enter Message:  </label><input id="inputMessage" type="text" name="message"><button id="sendButton" onclick="sendMessage()">Send</button><button onclick="sendPublicKey()">Share Public Key</button>
 <br/>
 <br/>
-<label>Enter Key:  </label><input id="inputKey" type="text" name="key">
+
+<label>Enter Private Key:  </label><input id="inputPrivateKey" type="number" ><button id="keyButton" onclick="generatePublicKey()">Generate Public Key</button>
+<label id="labelPublicKey"></label>
+<br/>
+<br/>
+<label>Enter Public Key:  </label><input id="inputPublicKey" type="number" > <button onclick="calculateCommonKey()">Calculate Key</button>
+<br/>
+<br/>
+<label>Common Key:  </label><input id="inputKey" type="text" name="number">
+<br/>
+<br/>
 
 <script src="script.js"></script>
 
