@@ -1,7 +1,7 @@
 
 var inputName,inputMessage,messageBox,inputKey,inputPrivateKey,labelPublicKey;
 //var socket = io.connect('localhost:3000');
-var socket = io.connect('https://kriptolojiassignment1.herokuapp.com/');
+var socket = io.connect('https://kriptolojiassignment1.herokuapp.com/');	
 
 inputName = document.getElementById('inputName');
 inputMessage = document.getElementById('inputMessage');
@@ -71,15 +71,15 @@ function cipherText(text)
 
 	messageBox.scrollTop = messageBox.scrollHeight;
 	return result;
-	}
+}
 
-	socket.on('cipherMessage',function (data){
+socket.on('cipherMessage',function (data){
 
 	if(inputName.value  == data.name)
 		return;
-
+	
 	messageBox.value += data.name + " : " + decipherText(data.message) +"\n";
-
+	messageBox.scrollTop = messageBox.scrollHeight;
 
 });
 
@@ -123,13 +123,6 @@ function mod(n, m)
 {
     return ((n % m) + m) % m;
 }
-
-
-socket.on('news', function (data) {
-	console.log(data);
-	socket.emit('my other event', { my: 'data2' });
-});
-
 
 function generatePublicKey()
 {
